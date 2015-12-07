@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.BridgePattern;
 using DesignPatterns.BuilderPattern;
 using DesignPatterns.CommandPattern;
+using DesignPatterns.Decorator;
 using DesignPatterns.InterpreterPattern;
 using DesignPatterns.VisitorPattern;
 using System;
@@ -137,9 +138,48 @@ namespace DesignPatterns
 
             #endregion
 
+            #region Decorator
+
+            // create a Simple Cake Base first
+            var cBase = new CakeBase();
+            PrintProductDetails(cBase);
+
+            // add cream to the cake
+            var creamCake = new CreamDecorator(cBase);
+            PrintProductDetails(creamCake);
+
+            // now add a Cherry on it
+            var cherryCake = new CherryDecorator(creamCake);
+            PrintProductDetails(cherryCake);
+
+            // now add Scent to it
+            var scentedCake = new ArtificialScentDecorator(cherryCake);
+            PrintProductDetails(scentedCake);
+
+            // Finally add a Name card on the cake
+            var nameCardOnCake = new NameCardDecorator(scentedCake);
+            PrintProductDetails(nameCardOnCake);
+
+            // now create a simple Pastry
+            var pastry = new PastryBase();
+            PrintProductDetails(pastry);
+
+            // add cream and cherry only on the pastry 
+            var creamPastry = new CreamDecorator(pastry);
+            var cherryPastry = new CherryDecorator(creamPastry);
+            PrintProductDetails(cherryPastry);
+
+            #endregion
+
             #endregion
 
             Console.ReadKey();
+        }
+
+        private static void PrintProductDetails(BakeryComponent product)
+        {
+            Console.WriteLine(); // some whitespace for readability
+            Console.WriteLine("Item: {0}, Price: {1}", product.GetName(), product.GetPrice());
         }
     }
 }
