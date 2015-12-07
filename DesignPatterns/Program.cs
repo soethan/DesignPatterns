@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.BridgePattern;
 using DesignPatterns.CommandPattern;
 using DesignPatterns.InterpreterPattern;
+using DesignPatterns.VisitorPattern;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -61,6 +62,20 @@ namespace DesignPatterns
 
             #endregion
 
+            #region Visitor
+
+            // Setup employee collection
+            Employees e = new Employees();
+            e.Attach(new Clerk());
+            e.Attach(new Director());
+            e.Attach(new President());
+
+            // Employees are 'visited'
+            e.Accept(new IncomeVisitor());
+            e.Accept(new VacationVisitor());
+
+            #endregion
+
             #endregion
 
             #region Structural Patterns
@@ -101,6 +116,7 @@ namespace DesignPatterns
             #endregion
 
             #endregion
+
             Console.ReadKey();
         }
     }
