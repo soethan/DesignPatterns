@@ -3,6 +3,7 @@ using DesignPatterns.BuilderPattern;
 using DesignPatterns.CommandPattern;
 using DesignPatterns.Decorator;
 using DesignPatterns.InterpreterPattern;
+using DesignPatterns.Observer;
 using DesignPatterns.VisitorPattern;
 using System;
 using System.Collections;
@@ -92,6 +93,25 @@ namespace DesignPatterns
             Console.WriteLine("{0} = {1}", roman, context.Output);
 
             Console.WriteLine("*********** Interpreter Pattern ends ***********");
+
+            #endregion
+
+            #region Observer
+
+            Console.WriteLine("*********** Observer Pattern starts ***********");
+
+            // Create IBM stock and attach investors
+            Stock ibm = new IBM("IBM", 120.00);
+            ibm.Attach(new Investor("Sorros"));
+            ibm.Attach(new Investor("Berkshire"));
+
+            // Fluctuating prices will notify investors
+            ibm.Price = 120.10;
+            ibm.Price = 121.00;
+            ibm.Price = 120.50;
+            ibm.Price = 120.75;
+
+            Console.WriteLine("*********** Observer Pattern ends ***********");
 
             #endregion
 
