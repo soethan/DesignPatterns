@@ -3,6 +3,7 @@ using DesignPatterns.BuilderPattern;
 using DesignPatterns.CommandPattern;
 using DesignPatterns.Decorator;
 using DesignPatterns.InterpreterPattern;
+using DesignPatterns.Mediator;
 using DesignPatterns.Observer;
 using DesignPatterns.VisitorPattern;
 using System;
@@ -93,6 +94,37 @@ namespace DesignPatterns
             Console.WriteLine("{0} = {1}", roman, context.Output);
 
             Console.WriteLine("*********** Interpreter Pattern ends ***********");
+
+            #endregion
+
+            #region Mediator
+
+            Console.WriteLine("*********** Mediator Pattern starts ***********");
+
+            // Create chatroom
+            IChatroom chatroom = new Chatroom();
+
+            // Create participants and register them
+            Participant George = new GraduateStudentParticipant("George");
+            Participant Paul = new GraduateStudentParticipant("Paul");
+            Participant Ringo = new GraduateStudentParticipant("Ringo");
+            Participant John = new GraduateStudentParticipant("John");
+            Participant Yoko = new UnderGraduateStudentParticipant("Yoko");
+
+            chatroom.Register(George);
+            chatroom.Register(Paul);
+            chatroom.Register(Ringo);
+            chatroom.Register(John);
+            chatroom.Register(Yoko);
+
+            // Chatting participants
+            Yoko.Send("John", "Hi John!");
+            Paul.Send("Ringo", "You need to study");
+            Ringo.Send("George", "Hello");
+            Paul.Send("John", "How are you");
+            John.Send("Yoko", "I can explain you Maths");
+
+            Console.WriteLine("*********** Mediator Pattern ends ***********");
 
             #endregion
 
