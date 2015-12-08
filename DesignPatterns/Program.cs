@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.BridgePattern;
 using DesignPatterns.BuilderPattern;
+using DesignPatterns.ChainOfResponsibility;
 using DesignPatterns.CommandPattern;
 using DesignPatterns.Decorator;
 using DesignPatterns.InterpreterPattern;
@@ -11,7 +12,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
@@ -49,6 +49,32 @@ namespace DesignPatterns
             #endregion
 
             #region Behavioral Patterns
+
+            #region ChainOfResponsibility
+
+            Console.WriteLine("*********** Chain of Responsibility Pattern starts ***********");
+
+            // Setup Chain of Responsibility
+            Approver directorLarry = new CompanyDirector();
+            Approver vicePresidentSam = new CompanyVicePresident();
+            Approver presidentTammy = new CompanyPresident();
+
+            directorLarry.SetSuccessor(vicePresidentSam);
+            vicePresidentSam.SetSuccessor(presidentTammy);
+
+            // Generate and process purchase requests
+            Purchase p = new Purchase(2034, 350.00, "Assets");
+            directorLarry.ProcessRequest(p);
+
+            p = new Purchase(2035, 32590.10, "Project X");
+            directorLarry.ProcessRequest(p);
+
+            p = new Purchase(2036, 122100.00, "Project Y");
+            directorLarry.ProcessRequest(p);
+
+            Console.WriteLine("*********** Chain of Responsibility Pattern ends ***********");
+
+            #endregion
 
             #region Command
 

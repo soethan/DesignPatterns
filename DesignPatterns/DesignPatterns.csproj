@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BridgePattern.cs" />
     <Compile Include="BuilderPattern.cs" />
+    <Compile Include="ChainOfResponsibility.cs" />
     <Compile Include="CommandPattern.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="Mediator.cs" />
