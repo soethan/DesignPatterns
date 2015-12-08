@@ -21,8 +21,9 @@ namespace DesignPatterns
 
             #region Builder
 
-            VehicleBuilder builder;
+            Console.WriteLine("*********** Builder Pattern starts ***********");
 
+            VehicleBuilder builder;
             // Create shop with vehicle builders
             var shop = new Shop();
 
@@ -39,6 +40,7 @@ namespace DesignPatterns
             shop.Construct(builder);
             builder.Vehicle.Show();
 
+            Console.WriteLine("*********** Builder Pattern ends ***********");
 
             #endregion
 
@@ -47,6 +49,8 @@ namespace DesignPatterns
             #region Behavioral Patterns
 
             #region Command
+
+            Console.WriteLine("*********** Command Pattern starts ***********");
 
             // Create user and let it compute
             var user = new User();
@@ -62,9 +66,13 @@ namespace DesignPatterns
             // Redo 3 commands
             user.Redo(3);
 
+            Console.WriteLine("*********** Command Pattern ends ***********");
+            
             #endregion
 
             #region Interpreter
+
+            Console.WriteLine("*********** Interpreter Pattern starts ***********");
 
             string roman = "MCMXXVIII";
             var context = new Context(roman);
@@ -83,9 +91,13 @@ namespace DesignPatterns
 
             Console.WriteLine("{0} = {1}", roman, context.Output);
 
+            Console.WriteLine("*********** Interpreter Pattern ends ***********");
+
             #endregion
 
             #region Visitor
+
+            Console.WriteLine("*********** Visitor Pattern starts ***********");
 
             // Setup employee collection
             Employees e = new Employees();
@@ -97,6 +109,8 @@ namespace DesignPatterns
             e.Accept(new IncomeVisitor());
             e.Accept(new VacationVisitor());
 
+            Console.WriteLine("*********** Visitor Pattern ends ***********");
+
             #endregion
 
             #endregion
@@ -104,6 +118,8 @@ namespace DesignPatterns
             #region Structural Patterns
 
             #region Bridge
+
+            Console.WriteLine("*********** Bridge Pattern starts ***********");
 
             var documents = new List<Manuscript>();
             var formatter = new FancyFormatter();
@@ -136,9 +152,13 @@ namespace DesignPatterns
                 doc.Print();
             }
 
+            Console.WriteLine("*********** Bridge Pattern ends ***********");
+
             #endregion
 
             #region Decorator
+
+            Console.WriteLine("*********** Decorator Pattern starts ***********");
 
             // create a Simple Cake Base first
             var cBase = new CakeBase();
@@ -168,6 +188,8 @@ namespace DesignPatterns
             var creamPastry = new CreamDecorator(pastry);
             var cherryPastry = new CherryDecorator(creamPastry);
             PrintProductDetails(cherryPastry);
+
+            Console.WriteLine("*********** Decorator Pattern ends ***********");
 
             #endregion
 
