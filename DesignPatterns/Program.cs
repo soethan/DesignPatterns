@@ -18,6 +18,17 @@ namespace DesignPatterns
         {
             #region Creational Patterns
 
+            #region Singleton
+
+            Console.WriteLine("*********** Singleton Pattern starts ***********");
+
+            Singleton<DbConnection>.Instance.Connect();
+            Console.WriteLine(string.Format("IsSameInstance = {0}", Singleton<DbConnection>.Instance == Singleton<DbConnection>.Instance));
+
+            Console.WriteLine("*********** Singleton Pattern ends ***********");
+
+            #endregion
+
             #region Builder
 
             Console.WriteLine("*********** Builder Pattern starts ***********");
