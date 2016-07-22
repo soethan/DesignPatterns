@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPatterns.Observer
 {
@@ -37,10 +34,8 @@ namespace DesignPatterns.Observer
             {
                 investor.Update(this);
             }
-            Console.WriteLine("");
         }
 
-        // Gets or sets the price
         public double Price
         {
             get { return _price; }
@@ -54,7 +49,6 @@ namespace DesignPatterns.Observer
             }
         }
 
-        // Gets the symbol
         public string Symbol
         {
             get { return _symbol; }
