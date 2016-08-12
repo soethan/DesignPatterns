@@ -9,6 +9,7 @@ using DesignPatterns.Observer;
 using DesignPatterns.VisitorPattern;
 using System;
 using System.Collections.Generic;
+using DesignPatterns.Utilities;
 
 namespace DesignPatterns
 {
@@ -16,6 +17,39 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            var level1 = new Level1 {
+                Name = "Level1",
+                Level2 = new Level2 {
+                    Name = "Level2",
+                    List = new List<string> { "aaa", "bbb", "ccc" },
+                    Level3 = new Level3 {
+                        Name = "Level3"
+                    }
+                }
+            };
+
+            var level1_samevalue = new Level1
+            {
+                Name = "Level1",
+                Level2 = new Level2
+                {
+                    Name = "Level2",
+                    List = new List<string> { "aaa", "bbb", "ccc" },
+                    Level3 = new Level3
+                    {
+                        Name = "Level3"
+                    }
+                }
+            };
+
+            if (level1.ObjectValuesCompare(level1_samevalue))
+            {
+                Console.WriteLine("Same Values");
+            }
+            else
+            {
+                Console.WriteLine("Different Values");
+            }
             #region Creational Patterns
 
             #region Singleton
