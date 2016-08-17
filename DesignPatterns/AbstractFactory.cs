@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace DesignPatterns
 {
+    //http://www.codeproject.com/Articles/328373/Understanding-and-Implementing-Abstract-Factory-Pa
     enum MANUFACTURER
     {
         NOKIA,
