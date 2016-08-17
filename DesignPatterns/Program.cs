@@ -52,6 +52,26 @@ namespace DesignPatterns
             }
             #region Creational Patterns
 
+            #region Abstract Factory
+
+            Console.WriteLine("*********** Abstract Factory Pattern starts ***********");
+
+            var phoneClient1 = new PhoneClient(MANUFACTURER.NOKIA);
+            var normalPhone1 = phoneClient1.GetPhone(PHONETYPE.NORMAL) as INormalPhone;
+            var normalPhone2 = phoneClient1.GetPhone(PHONETYPE.SMART) as ISmartPhone;
+            Console.WriteLine(normalPhone1.Name());
+            Console.WriteLine(normalPhone2.Name());
+
+            var phoneClient2 = new PhoneClient(MANUFACTURER.SONYERICSSON);
+            var normalPhone3 = phoneClient2.GetPhone(PHONETYPE.NORMAL) as INormalPhone;
+            var normalPhone4 = phoneClient2.GetPhone(PHONETYPE.SMART) as ISmartPhone;
+            Console.WriteLine(normalPhone3.Name());
+            Console.WriteLine(normalPhone4.Name());
+
+            Console.WriteLine("*********** Abstract Factory Pattern ends ***********");
+
+            #endregion
+
             #region Factory Method
 
             Console.WriteLine("*********** Factory Method Pattern starts ***********");
