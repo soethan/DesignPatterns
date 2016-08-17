@@ -46,6 +46,7 @@
     <Compile Include="ChainOfResponsibility.cs" />
     <Compile Include="CommandPattern.cs" />
     <Compile Include="Decorator.cs" />
+    <Compile Include="FactoryMethod.cs" />
     <Compile Include="Mediator.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Program.cs" />

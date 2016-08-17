@@ -52,6 +52,29 @@ namespace DesignPatterns
             }
             #region Creational Patterns
 
+            #region Factory Method
+
+            Console.WriteLine("*********** Factory Method Pattern starts ***********");
+
+            // Note: constructors call Factory Method
+            var documentList = new List<Document>();
+            documentList.Add(new Resume());
+            documentList.Add(new Report());
+
+            // Display document pages
+            foreach (Document document in documentList)
+            {
+                Console.WriteLine("\n" + document.GetType().Name + "--");
+                foreach (Page page in document.Pages)
+                {
+                    Console.WriteLine(" " + page.GetType().Name);
+                }
+            }
+
+            Console.WriteLine("*********** Factory Method Pattern ends ***********");
+
+            #endregion
+
             #region Singleton
 
             Console.WriteLine("*********** Singleton Pattern starts ***********");
