@@ -361,8 +361,16 @@ namespace DesignPatterns
             #region Service Locator Pattern
 
             //http://www.c-sharpcorner.com/UploadFile/dacca2/service-locator-design-pattern/
-            //TODO: add Service Locator Pattern
+            Console.WriteLine("*********** Service Locator Pattern starts ***********");
 
+            ServiceLocator serviceLocator = new ServiceLocator();
+            IServiceA serviceA = serviceLocator.GetService<IServiceA>();
+            serviceA.Execute();
+
+            IServiceB serviceB = serviceLocator.GetService<IServiceB>();
+            serviceB.Execute();
+
+            Console.WriteLine("*********** Service Locator Pattern ends ***********");
             #endregion
 
             Console.ReadKey();
