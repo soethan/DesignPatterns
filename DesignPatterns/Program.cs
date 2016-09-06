@@ -358,6 +358,13 @@ namespace DesignPatterns
 
             #endregion
 
+            #region Service Locator Pattern
+
+            //http://www.c-sharpcorner.com/UploadFile/dacca2/service-locator-design-pattern/
+            //TODO: add Service Locator Pattern
+
+            #endregion
+
             Console.ReadKey();
         }
 
