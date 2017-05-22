@@ -9,10 +9,17 @@ namespace DesignPatterns.Utilities
 {
     public static class Utility
     {
-        public static bool ObjectValuesEqual(this object obj, object anotherObj)
+        /// <summary>
+        /// https://stackoverflow.com/questions/31835823/parameter-count-mismatch-in-property-getvalue
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="anotherObj"></param>
+        /// <returns></returns>
+        public static bool ObjectValuesEqual<T>(this T obj, T anotherObj) where T: class
         {
             if (ReferenceEquals(obj, anotherObj)) return true;
-            if (obj == null || anotherObj == null) return false;
+            if (obj == null || anotherObj == null) return false;    
             if (obj.GetType() != anotherObj.GetType()) return false;
 
             //Primitive properties: int, double, DateTime, etc
@@ -20,11 +27,11 @@ namespace DesignPatterns.Utilities
             //array property
             if (obj is IEnumerable && obj.GetType().IsGenericType)
             {
-                return (obj as IEnumerable<string>).SequenceEqual(anotherObj as IEnumerable<string>);
+                return (obj as IEnumerable<T>).SequenceEqual(anotherObj as IEnumerable<T>, new ObjectComparer<T>());
             }
 
             var result = true;
-            foreach (var property in obj.GetType().GetProperties())
+            foreach (var property in obj.GetType().GetProperties().Where(p => p.GetIndexParameters().Length == 0))
             {
                 var objValue = property.GetValue(obj);
                 var anotherValue = property.GetValue(anotherObj);
@@ -32,6 +39,19 @@ namespace DesignPatterns.Utilities
                 if (!objValue.ObjectValuesEqual(anotherValue)) result = false;
             }
             return result;
+        }
+    }
+
+    public class ObjectComparer<T> : IEqualityComparer<T> where T: class
+    {
+        public bool Equals(T obj, T anotherObj)
+        {
+            return obj.ObjectValuesEqual(anotherObj);
+        }
+        
+        public int GetHashCode(T obj)
+        {
+            return 1;
         }
     }
 }
