@@ -42,7 +42,30 @@ namespace DesignPatterns
                 }
             };
 
-            if (level1.ObjectValuesCompare(level1_samevalue))
+            var level1_diffvalue = new Level1
+            {
+                Name = "Level1",
+                Level2 = new Level2
+                {
+                    Name = "Level2",
+                    List = new List<string> { "aaaA", "bbb", "ccc" },
+                    Level3 = new Level3
+                    {
+                        Name = "Level3"
+                    }
+                }
+            };
+
+            if (level1.ObjectValuesEqual(level1_samevalue))
+            {
+                Console.WriteLine("Same Values");
+            }
+            else
+            {
+                Console.WriteLine("Different Values");
+            }
+
+            if (level1.ObjectValuesEqual(level1_diffvalue))
             {
                 Console.WriteLine("Same Values");
             }

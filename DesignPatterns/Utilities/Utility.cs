@@ -9,7 +9,7 @@ namespace DesignPatterns.Utilities
 {
     public static class Utility
     {
-        public static bool ObjectValuesCompare(this object obj, object anotherObj)
+        public static bool ObjectValuesEqual(this object obj, object anotherObj)
         {
             if (ReferenceEquals(obj, anotherObj)) return true;
             if (obj == null || anotherObj == null) return false;
@@ -29,25 +29,9 @@ namespace DesignPatterns.Utilities
                 var objValue = property.GetValue(obj);
                 var anotherValue = property.GetValue(anotherObj);
                 //Recursion
-                if (!objValue.ObjectValuesCompare(anotherValue)) result = false;
+                if (!objValue.ObjectValuesEqual(anotherValue)) result = false;
             }
             return result;
         }
-    }
-
-    public class Level1
-    {
-        public string Name { get; set; }
-        public Level2 Level2 { get; set; }
-    }
-    public class Level2
-    {
-        public string Name { get; set; }
-        public List<string> List { get; set; }
-        public Level3 Level3 { get; set; }
-    }
-    public class Level3
-    {
-        public string Name { get; set; }
     }
 }
