@@ -7,16 +7,18 @@ using System.Threading.Tasks;
 namespace DesignPatterns.VisitorPattern
 {
     /// <summary>
-    /// The 'Visitor' interface
+    /// Represent an operation to be performed on the elements of an object structure. 
+    /// Visitor lets you define a new operation without changing the classes of the elements on which it operates.
+    /// http://www.dofactory.com/net/visitor-design-pattern
     /// </summary>
+
+    //The 'Visitor' interface
     public interface IVisitor
     {
         void Visit(Element element);
     }
 
-    /// <summary>
-    /// A 'ConcreteVisitor' class
-    /// </summary>
+    //ConcreteVisitor
     public class IncomeVisitor : IVisitor
     {
         public void Visit(Element element)
@@ -30,9 +32,7 @@ namespace DesignPatterns.VisitorPattern
         }
     }
 
-    /// <summary>
-    /// A 'ConcreteVisitor' class
-    /// </summary>
+    //ConcreteVisitor
     public class IncomeVisitor2 : IVisitor
     {
         public void Visit(Element element)
@@ -46,9 +46,7 @@ namespace DesignPatterns.VisitorPattern
         }
     }
 
-    /// <summary>
-    /// A 'ConcreteVisitor' class
-    /// </summary>
+    //ConcreteVisitor
     public class VacationVisitor : IVisitor
     {
         public void Visit(Element element)
@@ -64,24 +62,19 @@ namespace DesignPatterns.VisitorPattern
         }
     }
 
-    /// <summary>
-    /// The 'Element' abstract class
-    /// </summary>
+    //'Element' abstract class
     public abstract class Element
     {
         public abstract void Accept(IVisitor visitor);
     }
 
-    /// <summary>
-    /// The 'ConcreteElement' class
-    /// </summary>
+    //ConcreteElement
     public class Employee : Element
     {
         private string _name;
         private double _income;
         private int _vacationDays;
 
-        // Constructor
         public Employee(string name, double income,
           int vacationDays)
         {
@@ -90,14 +83,12 @@ namespace DesignPatterns.VisitorPattern
             this._vacationDays = vacationDays;
         }
 
-        // Gets or sets the name
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
 
-        // Gets or sets income
         public double Income
         {
             get { return _income; }
@@ -117,9 +108,7 @@ namespace DesignPatterns.VisitorPattern
         }
     }
 
-    /// <summary>
-    /// The 'ObjectStructure' class
-    /// </summary>
+    //ObjectStructure
     public class Employees
     {
         private List<Employee> _employees = new List<Employee>();
