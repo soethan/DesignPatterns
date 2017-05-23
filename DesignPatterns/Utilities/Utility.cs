@@ -11,6 +11,8 @@ namespace DesignPatterns.Utilities
     {
         /// <summary>
         /// https://stackoverflow.com/questions/31835823/parameter-count-mismatch-in-property-getvalue
+        /// https://msdn.microsoft.com/en-us/library/system.object.gethashcode(v=vs.100).aspx
+        /// https://en.wikipedia.org/wiki/Exclusive_or  A XOR B shows that it outputs true whenever the inputs differ
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
