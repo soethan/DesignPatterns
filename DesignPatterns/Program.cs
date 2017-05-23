@@ -17,6 +17,8 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
+            #region Object Values Equal
+
             var level1 = new Level1 {
                 Name = "Level1",
                 Level2 = new Level2 {
@@ -76,6 +78,9 @@ namespace DesignPatterns
             {
                 Console.WriteLine("Different Values");
             }
+
+            #endregion
+
             #region Creational Patterns
 
             #region Abstract Factory

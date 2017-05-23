@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.Decorator
 {
+    /// <summary>
+    /// Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. 
+    /// http://www.dofactory.com/net/decorator-design-pattern
+    /// This pattern creates a decorator class which wraps the original class and provides additional functionality keeping class methods signature intact.
+    /// https://www.tutorialspoint.com/design_pattern/design_pattern_interview_questions.htm
+    /// </summary>
+
     //Component
     public abstract class BakeryComponent
     {
