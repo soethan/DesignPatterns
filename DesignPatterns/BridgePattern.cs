@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace DesignPatterns.BridgePattern
 {
     /// <summary>
-    /// Abstraction
+    /// Decouple an abstraction from its implementation so that the two can vary independently.
+    /// http://www.dofactory.com/net/bridge-design-pattern
     /// </summary>
+
+    //Abstraction
     public abstract class Manuscript
     {
         protected readonly IFormatter formatter;
@@ -21,6 +24,7 @@ namespace DesignPatterns.BridgePattern
         public abstract void Print();
     }
 
+    //RefinedAbstraction
     public class Book : Manuscript
     {
         public Book(IFormatter formatter)
@@ -42,6 +46,7 @@ namespace DesignPatterns.BridgePattern
         }
     }
 
+    //RefinedAbstraction
     public class TermPaper : Manuscript
     {
         public TermPaper(IFormatter formatter)
@@ -65,6 +70,7 @@ namespace DesignPatterns.BridgePattern
         }
     }
 
+    //RefinedAbstraction
     public class FAQ : Manuscript
     {
         public string Title { get; set; }
@@ -89,14 +95,13 @@ namespace DesignPatterns.BridgePattern
         }
     }
 
-    /// <summary>
-    /// Implementation
-    /// </summary>
+    //Implementor
     public interface IFormatter
     {
         string Format(string key, string value);
     }
 
+    //ConcreteImplementor
     public class StandardFormatter : IFormatter
     {
         public string Format(string key, string value)
@@ -105,6 +110,7 @@ namespace DesignPatterns.BridgePattern
         }
     }
 
+    //ConcreteImplementor
     public class FancyFormatter : IFormatter
     {
         public string Format(string key, string value)
@@ -113,6 +119,7 @@ namespace DesignPatterns.BridgePattern
         }
     }
 
+    //ConcreteImplementor
     public class BackwardsFormatter : IFormatter
     {
         public string Format(string key, string value)
