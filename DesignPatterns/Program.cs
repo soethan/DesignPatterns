@@ -24,7 +24,7 @@ namespace DesignPatterns
                 Level2 = new Level2 {
                     Name = "Level2",
                     strArray = new List<string> { "aaa", "bbb", "ccc" },
-                    Persons = new List<Person> { new Person { Id = 1, Name = "aaa" } },
+                    Persons = new List<Person> { new Person { Id = 1, Name = "aaa" }, new Person { Id = 2, Name = "bb" } },
                     Level3 = new Level3 {
                         Name = "Level3"
                     }
@@ -38,7 +38,7 @@ namespace DesignPatterns
                 {
                     Name = "Level2",
                     strArray = new List<string> { "ccc", "aaa", "bbb" },
-                    Persons = new List<Person> { new Person{ Id = 1, Name = "aaa"} },
+                    Persons = new List<Person> { new Person{ Id = 1, Name = "aaa"}, new Person { Id = 2, Name = "bb" } },
                     Level3 = new Level3
                     {
                         Name = "Level3"
