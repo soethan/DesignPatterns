@@ -15,6 +15,8 @@ namespace DesignPatterns
 {
     class Program
     {
+        private static object _ConsoleLock = new object();
+
         static void Main(string[] args)
         {
             #region Object Values Equal
@@ -63,20 +65,20 @@ namespace DesignPatterns
 
             if (level1.ObjectValuesEqual(level1_samevalue))
             {
-                Console.WriteLine("Same Values");
+                ConsoleWriteWithColor("Same Values");
             }
             else
             {
-                Console.WriteLine("Different Values");
+                ConsoleWriteWithColor("Different Values");
             }
 
             if (level1.ObjectValuesEqual(level1_diffvalue))
             {
-                Console.WriteLine("Same Values");
+                ConsoleWriteWithColor("Same Values");
             }
             else
             {
-                Console.WriteLine("Different Values");
+                ConsoleWriteWithColor("Different Values");
             }
 
             #endregion
@@ -85,27 +87,27 @@ namespace DesignPatterns
 
             #region Abstract Factory
 
-            Console.WriteLine("*********** Abstract Factory Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Abstract Factory Pattern starts ***********", ConsoleColor.Green);
 
             var phoneClient1 = new PhoneClient(MANUFACTURER.NOKIA);
             var normalPhone1 = phoneClient1.GetPhone(PHONETYPE.NORMAL) as INormalPhone;
             var normalPhone2 = phoneClient1.GetPhone(PHONETYPE.SMART) as ISmartPhone;
-            Console.WriteLine(normalPhone1.Name());
-            Console.WriteLine(normalPhone2.Name());
+            ConsoleWriteWithColor(normalPhone1.Name(), ConsoleColor.Green);
+            ConsoleWriteWithColor(normalPhone2.Name(), ConsoleColor.Green);
 
             var phoneClient2 = new PhoneClient(MANUFACTURER.SONYERICSSON);
             var normalPhone3 = phoneClient2.GetPhone(PHONETYPE.NORMAL) as INormalPhone;
             var normalPhone4 = phoneClient2.GetPhone(PHONETYPE.SMART) as ISmartPhone;
-            Console.WriteLine(normalPhone3.Name());
-            Console.WriteLine(normalPhone4.Name());
+            ConsoleWriteWithColor(normalPhone3.Name(), ConsoleColor.Green);
+            ConsoleWriteWithColor(normalPhone4.Name(), ConsoleColor.Green);
 
-            Console.WriteLine("*********** Abstract Factory Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Abstract Factory Pattern ends ***********", ConsoleColor.Green);
 
             #endregion
 
             #region Factory Method
 
-            Console.WriteLine("*********** Factory Method Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Factory Method Pattern starts ***********", ConsoleColor.Green);
 
             // Note: constructors call Factory Method
             var documentList = new List<Document>();
@@ -115,31 +117,31 @@ namespace DesignPatterns
             // Display document pages
             foreach (Document document in documentList)
             {
-                Console.WriteLine("\n" + document.GetType().Name + "--");
+                ConsoleWriteWithColor("\n" + document.GetType().Name + "--", ConsoleColor.Green);
                 foreach (Page page in document.Pages)
                 {
-                    Console.WriteLine(" " + page.GetType().Name);
+                    ConsoleWriteWithColor(" " + page.GetType().Name, ConsoleColor.Green);
                 }
             }
 
-            Console.WriteLine("*********** Factory Method Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Factory Method Pattern ends ***********", ConsoleColor.Green);
 
             #endregion
 
             #region Singleton
 
-            Console.WriteLine("*********** Singleton Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Singleton Pattern starts ***********", ConsoleColor.Green);
 
             Singleton<DbConnection>.Instance.Connect();
-            Console.WriteLine(string.Format("IsSameInstance = {0}", Singleton<DbConnection>.Instance == Singleton<DbConnection>.Instance));
+            ConsoleWriteWithColor(string.Format("IsSameInstance = {0}", Singleton<DbConnection>.Instance == Singleton<DbConnection>.Instance), ConsoleColor.Green);
 
-            Console.WriteLine("*********** Singleton Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Singleton Pattern ends ***********", ConsoleColor.Green);
 
             #endregion
 
             #region Builder
 
-            Console.WriteLine("*********** Builder Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Builder Pattern starts ***********", ConsoleColor.Green);
 
             VehicleBuilder builder;
             // Create shop with vehicle builders
@@ -158,7 +160,7 @@ namespace DesignPatterns
             shop.Construct(builder);
             builder.Vehicle.Show();
 
-            Console.WriteLine("*********** Builder Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Builder Pattern ends ***********", ConsoleColor.Green);
 
             #endregion
 
@@ -168,7 +170,7 @@ namespace DesignPatterns
 
             #region ChainOfResponsibility
 
-            Console.WriteLine("*********** Chain of Responsibility Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Chain of Responsibility Pattern starts ***********");
 
             // Setup Chain of Responsibility
             Approver directorLarry = new CompanyDirector();
@@ -188,13 +190,13 @@ namespace DesignPatterns
             p = new Purchase(2036, 122100.00, "Project Y");
             directorLarry.ProcessRequest(p);
 
-            Console.WriteLine("*********** Chain of Responsibility Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Chain of Responsibility Pattern ends ***********");
 
             #endregion
 
             #region Command
 
-            Console.WriteLine("*********** Command Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Command Pattern starts ***********");
 
             // Create user and let it compute
             var user = new User();
@@ -210,13 +212,13 @@ namespace DesignPatterns
             // Redo 3 commands
             user.Redo(3);
 
-            Console.WriteLine("*********** Command Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Command Pattern ends ***********");
             
             #endregion
 
             #region Interpreter
 
-            Console.WriteLine("*********** Interpreter Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Interpreter Pattern starts ***********");
 
             string roman = "MCMXXVIII";
             var context = new Context(roman);
@@ -233,15 +235,15 @@ namespace DesignPatterns
                 exp.Interpret(context);
             }
 
-            Console.WriteLine("{0} = {1}", roman, context.Output);
+            ConsoleWriteWithColor(string.Format("{0} = {1}", roman, context.Output), ConsoleColor.Blue);
 
-            Console.WriteLine("*********** Interpreter Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Interpreter Pattern ends ***********");
 
             #endregion
 
             #region Mediator
 
-            Console.WriteLine("*********** Mediator Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Mediator Pattern starts ***********");
 
             // Create chatroom
             IChatroom chatroom = new Chatroom();
@@ -266,13 +268,13 @@ namespace DesignPatterns
             Paul.Send("John", "How are you");
             John.Send("Yoko", "I can explain you Maths");
 
-            Console.WriteLine("*********** Mediator Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Mediator Pattern ends ***********");
 
             #endregion
 
             #region Observer
 
-            Console.WriteLine("*********** Observer Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Observer Pattern starts ***********");
 
             // Create IBM stock and attach investors
             Stock ibm = new IBM("IBM", 120.00);
@@ -285,13 +287,13 @@ namespace DesignPatterns
             ibm.Price = 120.50;
             ibm.Price = 120.75;
 
-            Console.WriteLine("*********** Observer Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Observer Pattern ends ***********");
 
             #endregion
 
             #region Visitor
 
-            Console.WriteLine("*********** Visitor Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Visitor Pattern starts ***********");
 
             // Setup employee collection
             Employees e = new Employees();
@@ -303,7 +305,7 @@ namespace DesignPatterns
             e.Accept(new IncomeVisitor());
             e.Accept(new VacationVisitor());
 
-            Console.WriteLine("*********** Visitor Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Visitor Pattern ends ***********");
 
             #endregion
 
@@ -313,7 +315,7 @@ namespace DesignPatterns
 
             #region Bridge
 
-            Console.WriteLine("*********** Bridge Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Bridge Pattern starts ***********");
 
             var documents = new List<Manuscript>();
             var formatter = new FancyFormatter();
@@ -346,13 +348,13 @@ namespace DesignPatterns
                 doc.Print();
             }
 
-            Console.WriteLine("*********** Bridge Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Bridge Pattern ends ***********");
 
             #endregion
 
             #region Decorator
 
-            Console.WriteLine("*********** Decorator Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Decorator Pattern starts ***********", ConsoleColor.Yellow);
 
             // create a Simple Cake Base first
             var cBase = new CakeBase();
@@ -383,7 +385,7 @@ namespace DesignPatterns
             var cherryPastry = new CherryDecorator(creamPastry);
             PrintProductDetails(cherryPastry);
 
-            Console.WriteLine("*********** Decorator Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Decorator Pattern ends ***********");
 
             #endregion
 
@@ -392,7 +394,7 @@ namespace DesignPatterns
             #region Service Locator Pattern
 
             //http://www.c-sharpcorner.com/UploadFile/dacca2/service-locator-design-pattern/
-            Console.WriteLine("*********** Service Locator Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Service Locator Pattern starts ***********");
 
             ServiceLocator serviceLocator = new ServiceLocator();
             IServiceA serviceA = serviceLocator.GetService<IServiceA>();
@@ -401,7 +403,7 @@ namespace DesignPatterns
             IServiceB serviceB = serviceLocator.GetService<IServiceB>();
             serviceB.Execute();
 
-            Console.WriteLine("*********** Service Locator Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Service Locator Pattern ends ***********");
             #endregion
 
             Console.ReadKey();
@@ -409,8 +411,18 @@ namespace DesignPatterns
 
         private static void PrintProductDetails(BakeryComponent product)
         {
-            Console.WriteLine(); // some whitespace for readability
-            Console.WriteLine("Item: {0}, Price: {1}", product.GetName(), product.GetPrice());
+            ConsoleWriteWithColor(""); // some whitespace for readability
+            ConsoleWriteWithColor(string.Format("Item: {0}, Price: {1}", product.GetName(), product.GetPrice()), ConsoleColor.Yellow);
+        }
+
+        private static void ConsoleWriteWithColor(string text, ConsoleColor textColor = ConsoleColor.White)
+        {
+            lock (_ConsoleLock)
+            {
+                Console.ForegroundColor = textColor;
+                Console.WriteLine(text);
+                Console.ResetColor();
+            }
         }
     }
 }

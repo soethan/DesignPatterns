@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 /// <summary>
 /// Define an interface for creating an object, but let subclasses decide which class to instantiate. 
 /// Factory Method lets a class defer instantiation to subclasses.
