@@ -54,6 +54,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterpreterPattern.cs" />
+    <Compile Include="Prototype.cs" />
     <Compile Include="ServiceLocatorPattern.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="Utilities\Utility.cs" />

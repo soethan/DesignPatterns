@@ -22,8 +22,6 @@ namespace DesignPatterns
     /// </summary>
     class PhoneClient
     {
-        ISmartPhone _smartPhone;
-        INormalPhone _normalPhone;
         IPhoneFactory factory;
 
         public PhoneClient(MANUFACTURER manufacturer)

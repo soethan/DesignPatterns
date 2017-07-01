@@ -164,6 +164,21 @@ namespace DesignPatterns
 
             #endregion
 
+            #region Prototype
+
+            ConsoleWriteWithColor("*********** Prototype Pattern starts ***********", ConsoleColor.Green);
+
+            var dev = new Developer(100, "Michael", "Developer", "C#");
+            var devCopy = (Developer)dev.Clone();
+            devCopy.Name = "Steven"; //Not mention Role and PreferredLanguage, it will copy above
+
+            ConsoleWriteWithColor(dev.GetDetails(), ConsoleColor.Green);
+            ConsoleWriteWithColor(devCopy.GetDetails(), ConsoleColor.Green);
+
+            ConsoleWriteWithColor("*********** Prototype Pattern ends ***********", ConsoleColor.Green);
+
+            #endregion
+
             #endregion
 
             #region Behavioral Patterns
