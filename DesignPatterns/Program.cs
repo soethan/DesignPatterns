@@ -344,7 +344,7 @@ namespace DesignPatterns
 
             #region Bridge
 
-            ConsoleWriteWithColor("*********** Bridge Pattern starts ***********");
+            ConsoleWriteWithColor("*********** Bridge Pattern starts ***********", ConsoleColor.Yellow);
 
             var documents = new List<Manuscript>();
             var formatter = new FancyFormatter();
@@ -377,7 +377,34 @@ namespace DesignPatterns
                 doc.Print();
             }
 
-            ConsoleWriteWithColor("*********** Bridge Pattern ends ***********");
+            ConsoleWriteWithColor("*********** Bridge Pattern ends ***********", ConsoleColor.Yellow);
+
+            #endregion
+
+            #region Composite
+
+            ConsoleWriteWithColor("*********** Composite Pattern starts ***********", ConsoleColor.Yellow);
+
+            Worker workerA = new Worker("Worker A", 5);
+            Supervisor supervisorB = new Supervisor("Supervisor B", 6);
+            Supervisor supervisorC = new Supervisor("Supervisor C", 7);
+            Supervisor supervisorD = new Supervisor("Supervisor D", 9);
+            Worker workerE = new Worker("Worker E", 8);
+
+            //set up the relationships
+            //C ==> B, D
+            //B ==> A
+            //D ==> E
+            supervisorB.AddSubordinate(workerA);
+            supervisorC.AddSubordinate(supervisorB);
+            supervisorC.AddSubordinate(supervisorD);
+            supervisorD.AddSubordinate(workerE);
+
+            //supervisorC shows his happiness and asks everyone else to do the same
+            if (supervisorC is IWorker)
+                (supervisorC as IWorker).ShowHappiness();
+
+            ConsoleWriteWithColor("*********** Composite Pattern ends ***********", ConsoleColor.Yellow);
 
             #endregion
 

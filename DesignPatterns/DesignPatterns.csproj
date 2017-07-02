@@ -47,6 +47,7 @@
     <Compile Include="BuilderPattern.cs" />
     <Compile Include="ChainOfResponsibility.cs" />
     <Compile Include="CommandPattern.cs" />
+    <Compile Include="CompositePattern.cs" />
     <Compile Include="Decorator.cs" />
     <Compile Include="FactoryMethod.cs" />
     <Compile Include="Levels.cs" />
