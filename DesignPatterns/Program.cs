@@ -328,6 +328,20 @@ namespace DesignPatterns
 
             #region Structural Patterns
 
+            #region Adapter
+
+            ConsoleWriteWithColor("*********** Adapter Pattern starts ***********", ConsoleColor.Yellow);
+
+            ITarget adapter = new VendorAdapter();
+            foreach (string product in adapter.GetProducts())
+            {
+                ConsoleWriteWithColor(product, ConsoleColor.Yellow);
+            }
+
+            ConsoleWriteWithColor("*********** Adapter Pattern ends ***********", ConsoleColor.Yellow);
+
+            #endregion
+
             #region Bridge
 
             ConsoleWriteWithColor("*********** Bridge Pattern starts ***********");

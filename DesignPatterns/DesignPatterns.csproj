@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractFactory.cs" />
+    <Compile Include="Adapter.cs" />
     <Compile Include="BridgePattern.cs" />
     <Compile Include="BuilderPattern.cs" />
     <Compile Include="ChainOfResponsibility.cs" />
