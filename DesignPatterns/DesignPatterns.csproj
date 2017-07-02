@@ -54,6 +54,7 @@
     <Compile Include="Flyweight.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Mediator.cs" />
+    <Compile Include="Memento.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
