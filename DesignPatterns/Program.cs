@@ -306,6 +306,28 @@ namespace DesignPatterns
 
             #endregion
 
+            #region Strategy
+
+            ConsoleWriteWithColor("*********** Strategy Pattern starts ***********");
+
+            var studentRecords = new SortedList();
+
+            studentRecords.Add("Samual");
+            studentRecords.Add("Jimmy");
+            studentRecords.Add("Sandra");
+            studentRecords.Add("Vivek");
+            studentRecords.Add("Anna");
+
+            studentRecords.SetSortStrategy(new QuickSort());
+            studentRecords.Sort();
+
+            studentRecords.SetSortStrategy(new MergeSort());
+            studentRecords.Sort();
+
+            ConsoleWriteWithColor("*********** Strategy Pattern ends ***********");
+
+            #endregion
+
             #region Visitor
 
             ConsoleWriteWithColor("*********** Visitor Pattern starts ***********");
@@ -324,6 +346,7 @@ namespace DesignPatterns
 
             #endregion
 
+            
             #endregion
 
             #region Structural Patterns
