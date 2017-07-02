@@ -180,175 +180,7 @@ namespace DesignPatterns
             #endregion
 
             #endregion
-
-            #region Behavioral Patterns
-
-            #region ChainOfResponsibility
-
-            ConsoleWriteWithColor("*********** Chain of Responsibility Pattern starts ***********");
-
-            // Setup Chain of Responsibility
-            Approver directorLarry = new CompanyDirector();
-            Approver vicePresidentSam = new CompanyVicePresident();
-            Approver presidentTammy = new CompanyPresident();
-
-            directorLarry.SetSuccessor(vicePresidentSam);
-            vicePresidentSam.SetSuccessor(presidentTammy);
-
-            // Generate and process purchase requests
-            Purchase p = new Purchase(2034, 350.00, "Assets");
-            directorLarry.ProcessRequest(p);
-
-            p = new Purchase(2035, 32590.10, "Project X");
-            directorLarry.ProcessRequest(p);
-
-            p = new Purchase(2036, 122100.00, "Project Y");
-            directorLarry.ProcessRequest(p);
-
-            ConsoleWriteWithColor("*********** Chain of Responsibility Pattern ends ***********");
-
-            #endregion
-
-            #region Command
-
-            ConsoleWriteWithColor("*********** Command Pattern starts ***********");
-
-            // Create user and let it compute
-            var user = new User();
-
-            // User presses calculator buttons
-            user.Compute('+', 100);
-            user.Compute('-', 50);
-            user.Compute('*', 10);
-            user.Compute('/', 2);
-
-            // Undo 4 commands
-            user.Undo(4);
-            // Redo 3 commands
-            user.Redo(3);
-
-            ConsoleWriteWithColor("*********** Command Pattern ends ***********");
-            
-            #endregion
-
-            #region Interpreter
-
-            ConsoleWriteWithColor("*********** Interpreter Pattern starts ***********");
-
-            string roman = "MCMXXVIII";
-            var context = new Context(roman);
-
-            // Build the 'parse tree'
-            var tree = new List<Expression>();
-            tree.Add(new ThousandExpression());
-            tree.Add(new HundredExpression());
-            tree.Add(new TenExpression());
-            tree.Add(new OneExpression());
-
-            foreach (Expression exp in tree)
-            {
-                exp.Interpret(context);
-            }
-
-            ConsoleWriteWithColor(string.Format("{0} = {1}", roman, context.Output), ConsoleColor.Blue);
-
-            ConsoleWriteWithColor("*********** Interpreter Pattern ends ***********");
-
-            #endregion
-
-            #region Mediator
-
-            ConsoleWriteWithColor("*********** Mediator Pattern starts ***********");
-
-            // Create chatroom
-            IChatroom chatroom = new Chatroom();
-
-            // Create participants and register them
-            Participant George = new GraduateStudentParticipant("George");
-            Participant Paul = new GraduateStudentParticipant("Paul");
-            Participant Ringo = new GraduateStudentParticipant("Ringo");
-            Participant John = new GraduateStudentParticipant("John");
-            Participant Yoko = new UnderGraduateStudentParticipant("Yoko");
-
-            chatroom.Register(George);
-            chatroom.Register(Paul);
-            chatroom.Register(Ringo);
-            chatroom.Register(John);
-            chatroom.Register(Yoko);
-
-            // Chatting participants
-            Yoko.Send("John", "Hi John!");
-            Paul.Send("Ringo", "You need to study");
-            Ringo.Send("George", "Hello");
-            Paul.Send("John", "How are you");
-            John.Send("Yoko", "I can explain you Maths");
-
-            ConsoleWriteWithColor("*********** Mediator Pattern ends ***********");
-
-            #endregion
-
-            #region Observer
-
-            ConsoleWriteWithColor("*********** Observer Pattern starts ***********");
-
-            // Create IBM stock and attach investors
-            Stock ibm = new IBM("IBM", 120.00);
-            ibm.Attach(new Investor("Sorros"));
-            ibm.Attach(new Investor("Berkshire"));
-
-            // Fluctuating prices will notify investors
-            ibm.Price = 120.10;
-            ibm.Price = 121.00;
-            ibm.Price = 120.50;
-            ibm.Price = 120.75;
-
-            ConsoleWriteWithColor("*********** Observer Pattern ends ***********");
-
-            #endregion
-
-            #region Strategy
-
-            ConsoleWriteWithColor("*********** Strategy Pattern starts ***********");
-
-            var studentRecords = new SortedList();
-
-            studentRecords.Add("Samual");
-            studentRecords.Add("Jimmy");
-            studentRecords.Add("Sandra");
-            studentRecords.Add("Vivek");
-            studentRecords.Add("Anna");
-
-            studentRecords.SetSortStrategy(new QuickSort());
-            studentRecords.Sort();
-
-            studentRecords.SetSortStrategy(new MergeSort());
-            studentRecords.Sort();
-
-            ConsoleWriteWithColor("*********** Strategy Pattern ends ***********");
-
-            #endregion
-
-            #region Visitor
-
-            ConsoleWriteWithColor("*********** Visitor Pattern starts ***********");
-
-            // Setup employee collection
-            Employees e = new Employees();
-            e.Attach(new Clerk());
-            e.Attach(new Director());
-            e.Attach(new President());
-
-            // Employees are 'visited'
-            e.Accept(new IncomeVisitor());
-            e.Accept(new VacationVisitor());
-
-            ConsoleWriteWithColor("*********** Visitor Pattern ends ***********");
-
-            #endregion
-
-            
-            #endregion
-
+                        
             #region Structural Patterns
 
             #region Adapter
@@ -531,6 +363,174 @@ namespace DesignPatterns
             ConsoleWriteWithColor("*********** Proxy Pattern ends ***********", ConsoleColor.Yellow);
 
             #endregion
+
+            #endregion
+
+            #region Behavioral Patterns
+
+            #region ChainOfResponsibility
+
+            ConsoleWriteWithColor("*********** Chain of Responsibility Pattern starts ***********");
+
+            // Setup Chain of Responsibility
+            Approver directorLarry = new CompanyDirector();
+            Approver vicePresidentSam = new CompanyVicePresident();
+            Approver presidentTammy = new CompanyPresident();
+
+            directorLarry.SetSuccessor(vicePresidentSam);
+            vicePresidentSam.SetSuccessor(presidentTammy);
+
+            // Generate and process purchase requests
+            Purchase p = new Purchase(2034, 350.00, "Assets");
+            directorLarry.ProcessRequest(p);
+
+            p = new Purchase(2035, 32590.10, "Project X");
+            directorLarry.ProcessRequest(p);
+
+            p = new Purchase(2036, 122100.00, "Project Y");
+            directorLarry.ProcessRequest(p);
+
+            ConsoleWriteWithColor("*********** Chain of Responsibility Pattern ends ***********");
+
+            #endregion
+
+            #region Command
+
+            ConsoleWriteWithColor("*********** Command Pattern starts ***********");
+
+            // Create user and let it compute
+            var user = new User();
+
+            // User presses calculator buttons
+            user.Compute('+', 100);
+            user.Compute('-', 50);
+            user.Compute('*', 10);
+            user.Compute('/', 2);
+
+            // Undo 4 commands
+            user.Undo(4);
+            // Redo 3 commands
+            user.Redo(3);
+
+            ConsoleWriteWithColor("*********** Command Pattern ends ***********");
+
+            #endregion
+
+            #region Interpreter
+
+            ConsoleWriteWithColor("*********** Interpreter Pattern starts ***********");
+
+            string roman = "MCMXXVIII";
+            var context = new Context(roman);
+
+            // Build the 'parse tree'
+            var tree = new List<Expression>();
+            tree.Add(new ThousandExpression());
+            tree.Add(new HundredExpression());
+            tree.Add(new TenExpression());
+            tree.Add(new OneExpression());
+
+            foreach (Expression exp in tree)
+            {
+                exp.Interpret(context);
+            }
+
+            ConsoleWriteWithColor(string.Format("{0} = {1}", roman, context.Output), ConsoleColor.Blue);
+
+            ConsoleWriteWithColor("*********** Interpreter Pattern ends ***********");
+
+            #endregion
+
+            #region Mediator
+
+            ConsoleWriteWithColor("*********** Mediator Pattern starts ***********");
+
+            // Create chatroom
+            IChatroom chatroom = new Chatroom();
+
+            // Create participants and register them
+            Participant George = new GraduateStudentParticipant("George");
+            Participant Paul = new GraduateStudentParticipant("Paul");
+            Participant Ringo = new GraduateStudentParticipant("Ringo");
+            Participant John = new GraduateStudentParticipant("John");
+            Participant Yoko = new UnderGraduateStudentParticipant("Yoko");
+
+            chatroom.Register(George);
+            chatroom.Register(Paul);
+            chatroom.Register(Ringo);
+            chatroom.Register(John);
+            chatroom.Register(Yoko);
+
+            // Chatting participants
+            Yoko.Send("John", "Hi John!");
+            Paul.Send("Ringo", "You need to study");
+            Ringo.Send("George", "Hello");
+            Paul.Send("John", "How are you");
+            John.Send("Yoko", "I can explain you Maths");
+
+            ConsoleWriteWithColor("*********** Mediator Pattern ends ***********");
+
+            #endregion
+
+            #region Observer
+
+            ConsoleWriteWithColor("*********** Observer Pattern starts ***********");
+
+            // Create IBM stock and attach investors
+            Stock ibm = new IBM("IBM", 120.00);
+            ibm.Attach(new Investor("Sorros"));
+            ibm.Attach(new Investor("Berkshire"));
+
+            // Fluctuating prices will notify investors
+            ibm.Price = 120.10;
+            ibm.Price = 121.00;
+            ibm.Price = 120.50;
+            ibm.Price = 120.75;
+
+            ConsoleWriteWithColor("*********** Observer Pattern ends ***********");
+
+            #endregion
+
+            #region Strategy
+
+            ConsoleWriteWithColor("*********** Strategy Pattern starts ***********");
+
+            var studentRecords = new SortedList();
+
+            studentRecords.Add("Samual");
+            studentRecords.Add("Jimmy");
+            studentRecords.Add("Sandra");
+            studentRecords.Add("Vivek");
+            studentRecords.Add("Anna");
+
+            studentRecords.SetSortStrategy(new QuickSort());
+            studentRecords.Sort();
+
+            studentRecords.SetSortStrategy(new MergeSort());
+            studentRecords.Sort();
+
+            ConsoleWriteWithColor("*********** Strategy Pattern ends ***********");
+
+            #endregion
+
+            #region Visitor
+
+            ConsoleWriteWithColor("*********** Visitor Pattern starts ***********");
+
+            // Setup employee collection
+            Employees e = new Employees();
+            e.Attach(new Clerk());
+            e.Attach(new Director());
+            e.Attach(new President());
+
+            // Employees are 'visited'
+            e.Accept(new IncomeVisitor());
+            e.Accept(new VacationVisitor());
+
+            ConsoleWriteWithColor("*********** Visitor Pattern ends ***********");
+
+            #endregion
+
 
             #endregion
 
