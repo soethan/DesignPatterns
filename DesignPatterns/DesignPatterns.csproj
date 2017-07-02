@@ -52,6 +52,7 @@
     <Compile Include="FacadePattern.cs" />
     <Compile Include="FactoryMethod.cs" />
     <Compile Include="Flyweight.cs" />
+    <Compile Include="Iterator.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Mediator.cs" />
     <Compile Include="Memento.cs" />
