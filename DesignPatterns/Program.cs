@@ -115,10 +115,10 @@ namespace DesignPatterns
             documentList.Add(new Report());
 
             // Display document pages
-            foreach (Document document in documentList)
+            foreach (Document doc in documentList)
             {
-                ConsoleWriteWithColor("\n" + document.GetType().Name + "--", ConsoleColor.Green);
-                foreach (Page page in document.Pages)
+                ConsoleWriteWithColor("\n" + doc.GetType().Name + "--", ConsoleColor.Green);
+                foreach (Page page in doc.Pages)
                 {
                     ConsoleWriteWithColor(" " + page.GetType().Name, ConsoleColor.Green);
                 }
@@ -464,6 +464,31 @@ namespace DesignPatterns
             facade.FinalizeOrder(orderDetails);
 
             ConsoleWriteWithColor("*********** Facade Pattern ends ***********", ConsoleColor.Yellow);
+
+            #endregion
+
+            #region Flyweight
+
+            ConsoleWriteWithColor("*********** Flyweight Pattern starts ***********", ConsoleColor.Yellow);
+
+            // Build a document with text
+            string document = "AAZZBBZB";
+            char[] chars = document.ToCharArray();
+
+            CharacterFactory factory = new CharacterFactory();
+
+            // extrinsic state
+            int pointSize = 10;
+
+            // For each character use a flyweight object
+            foreach (char c in chars)
+            {
+                pointSize++;
+                Character character = factory.GetCharacter(c);
+                character.Display(pointSize);
+            }
+
+            ConsoleWriteWithColor("*********** Flyweight Pattern ends ***********", ConsoleColor.Yellow);
 
             #endregion
 
