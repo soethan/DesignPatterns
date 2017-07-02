@@ -445,6 +445,28 @@ namespace DesignPatterns
 
             #endregion
 
+            #region Facade
+
+            ConsoleWriteWithColor("*********** Facade Pattern starts ***********", ConsoleColor.Yellow);
+            //Creating the Order/Product details
+            OrderDetails orderDetails = new OrderDetails("C# Design Pattern Book",
+                                                         "Simplified book on design patterns in C#",
+                                                         500,
+                                                         10,
+                                                         "Street No 1",
+                                                         "Educational Area",
+                                                         1212,
+                                                         "4156213754"
+                                                         );
+
+            // Using Facade
+            var facade = new OnlineShoppingFacade();
+            facade.FinalizeOrder(orderDetails);
+
+            ConsoleWriteWithColor("*********** Facade Pattern ends ***********", ConsoleColor.Yellow);
+
+            #endregion
+
             #endregion
 
             #region Service Locator Pattern

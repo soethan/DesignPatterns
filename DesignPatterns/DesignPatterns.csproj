@@ -49,6 +49,7 @@
     <Compile Include="CommandPattern.cs" />
     <Compile Include="CompositePattern.cs" />
     <Compile Include="Decorator.cs" />
+    <Compile Include="FacadePattern.cs" />
     <Compile Include="FactoryMethod.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Mediator.cs" />
