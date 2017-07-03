@@ -64,6 +64,7 @@
     <Compile Include="ProxyPattern.cs" />
     <Compile Include="ServiceLocatorPattern.cs" />
     <Compile Include="Singleton.cs" />
+    <Compile Include="StatePattern.cs" />
     <Compile Include="StrategyPattern.cs" />
     <Compile Include="Utilities\Utility.cs" />
     <Compile Include="VisitorPattern.cs" />
