@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
@@ -221,8 +217,7 @@ namespace DesignPatterns
         {
             get { return _state.Balance; }
         }
-
-
+        
         public State State
         {
             get { return _state; }

@@ -555,6 +555,8 @@ namespace DesignPatterns
 
             #region State
 
+            ConsoleWriteWithColor("*********** State Pattern starts ***********");
+
             //Open a new account
             var account = new Account("Steven");
 
@@ -567,6 +569,8 @@ namespace DesignPatterns
 
             account.Withdraw(2000.00);
             account.Withdraw(1100.00);
+
+            ConsoleWriteWithColor("*********** State Pattern ends ***********");
 
             #endregion
 
@@ -589,6 +593,26 @@ namespace DesignPatterns
             studentRecords.Sort();
 
             ConsoleWriteWithColor("*********** Strategy Pattern ends ***********");
+
+            #endregion
+
+            #region Template Method
+
+            ConsoleWriteWithColor("*********** Template Method Pattern starts ***********");
+
+            DataExporter exporter = null;
+
+            // Lets export the data to Excel file
+            exporter = new ExcelExporter();
+            exporter.ExportFormatedData();
+
+            Console.WriteLine();
+
+            // Lets export the data to PDF file
+            exporter = new PDFExporter();
+            exporter.ExportFormatedData();
+
+            ConsoleWriteWithColor("*********** Template Method Pattern ends ***********");
 
             #endregion
 
