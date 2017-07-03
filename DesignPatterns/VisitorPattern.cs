@@ -15,13 +15,13 @@ namespace DesignPatterns.VisitorPattern
     //The 'Visitor' interface
     public interface IVisitor
     {
-        void Visit(Element element);
+        void Visit(AbstractEmployee element);
     }
 
     //ConcreteVisitor
     public class IncomeVisitor : IVisitor
     {
-        public void Visit(Element element)
+        public void Visit(AbstractEmployee element)
         {
             Employee employee = element as Employee;
 
@@ -35,7 +35,7 @@ namespace DesignPatterns.VisitorPattern
     //ConcreteVisitor
     public class IncomeVisitor2 : IVisitor
     {
-        public void Visit(Element element)
+        public void Visit(AbstractEmployee element)
         {
             Employee employee = element as Employee;
 
@@ -49,7 +49,7 @@ namespace DesignPatterns.VisitorPattern
     //ConcreteVisitor
     public class VacationVisitor : IVisitor
     {
-        public void Visit(Element element)
+        public void Visit(AbstractEmployee element)
         {
             var employee = element as Employee;
 
@@ -63,13 +63,13 @@ namespace DesignPatterns.VisitorPattern
     }
 
     //'Element' abstract class
-    public abstract class Element
+    public abstract class AbstractEmployee
     {
         public abstract void Accept(IVisitor visitor);
     }
 
     //ConcreteElement
-    public class Employee : Element
+    public class Employee : AbstractEmployee
     {
         private string _name;
         private double _income;
