@@ -43,6 +43,4 @@ namespace DesignPatterns
             Console.WriteLine("Exporting the data to a PDF file.");
         }
     }
-
-
 }
